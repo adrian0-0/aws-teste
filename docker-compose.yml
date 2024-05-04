@@ -1,0 +1,41 @@
+# services:
+#   app:
+#     container_name: next-app
+#     build: ./app
+#     env_file:
+#       - ./app/.env
+#     volumes:
+#       - app-volume:/var/www/html
+
+#   nginx:
+#     container_name: nginx-server
+#     build: ./nginx
+#     ports:
+#       - "80:80"
+#     volumes:
+#       - app-volume:/var/www/html
+#     depends_on:
+#       - app
+
+# volumes:
+#   app-volume:
+
+services:
+  nextjs:
+    image: nextjs:latest
+    container_name: nextjs
+    build: ./app
+    ports:
+      - "3000:3000"
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: nginx
+  #   build: ./nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - /etc/ssl:/etc/nginx/ssl:ro
+  #   depends_on:
+  #     - nextjs
+  # restart: always
