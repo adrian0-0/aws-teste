@@ -27,15 +27,21 @@ services:
     build: ./app
     ports:
       - "3000:3000"
-  # nginx:
-  #   image: nginx:latest
-  #   container_name: nginx
-  #   build: ./nginx
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - /etc/ssl:/etc/nginx/ssl:ro
-  #   depends_on:
-  #     - nextjs
+    volumes:
+      - spa-volume:/var/www/html
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - spa-volume:/var/www/html
+      - /etc/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - nextjs
   # restart: always
+
+volumes:
+  spa-volume:
