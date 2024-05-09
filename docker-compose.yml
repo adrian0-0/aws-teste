@@ -29,18 +29,18 @@ services:
       - "3000:3000"
     volumes:
       - spa-volume:/var/www/html
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    build: ./nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - spa-volume:/var/www/html
-      - /etc/ssl:/etc/nginx/ssl:ro
-    depends_on:
-      - nextjs
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: nginx
+  #   build: ./nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - spa-volume:/var/www/html
+  #     - /etc/ssl:/etc/nginx/ssl:ro
+  #   depends_on:
+  #     - nextjs
   # restart: always
 
 volumes:
